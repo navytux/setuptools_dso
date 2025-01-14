@@ -23,6 +23,15 @@ class TryCompile(unittest.TestCase):
         self.assertTrue(self.probe.check_symbol('abort', headers=['stdlib.h']))
         self.assertFalse(self.probe.check_symbol('intentionally_undeclared_symbol', headers=['stdlib.h']))
 
+    def test_undef(self):
+        self.assertTrue(self.probe.try_compile(
+            '''
+            #ifdef FOO
+            #  error FOO defined
+            #endif
+''', define_macros=[('FOO', None), ('FOO',)],
+        ))
+
     def test_macros(self):
         inp = os.path.join(self.probe.tempdir, 'defs.h')
         with open(inp, 'w') as F:

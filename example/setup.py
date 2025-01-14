@@ -20,7 +20,8 @@ def define_DSOs(cmd):
     assert not probe.check_symbol('intentionally_undeclared_symbol', headers=['stdlib.h'])
 
     dso = DSO('dsodemo.lib.demo', ['src/foo.c', 'src/bar.cpp'],
-        define_macros = [('BUILD_FOO', None)],
+        define_macros = [('BUILD_FOO', None), ('NOSUCHMACRO',)],
+        undef_macros=['NONEXISTANT'],
         include_dirs = ['src/dsodemo/lib'],
         # demonstrate passing other compiler flags, either conditionally or not.
         # these are not actually used.
