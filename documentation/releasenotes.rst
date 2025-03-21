@@ -5,6 +5,12 @@ Release Notes
 
 .. currentmodule:: setuptools_dso
 
+2.12.1 (UNRELEASED)
+-----------------
+
+* Fix ``wheel`` package deprecation (Oliver Copping)
+* Fix when using setuptools 77.0.3 (Alex Wells)
+
 2.11 (Aug 2024)
 ---------------
 
