@@ -722,7 +722,6 @@ class bdist_egg(_bdist_egg):
 # if right_before is specified build_dso is injected before that command
 # instead of as first dependency.
 def _needs_builddso(command, right_before=None):
-    assert issubclass(command, Command)
     # copy to avoid changing base class if sub_commands was just inherited
     _ = command.sub_commands[:]
     where = 0
