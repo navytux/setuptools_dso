@@ -14,29 +14,14 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.x"]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.x"]
         exclude:
           # GHA no longer includes
-          - os: ubuntu-latest
-            python-version: "3.6"
           - os: ubuntu-latest
             python-version: "3.7"
 
           # MacOS 14.4.1 for arm64 doesn't support Python < 3.8
           - os: macos-latest
-            python-version: "3.6"
-          - os: macos-latest
-            python-version: "3.7"
-
-        include:
-          # GHA doesn't list 3.6 for ubuntu-22
-          - os: ubuntu-20.04
-            python-version: "3.6"
-
-          # MacOS 13 required for Python < 3.8
-          - os: macos-13
-            python-version: "3.6"
-          - os: macos-13
             python-version: "3.7"
 
     steps:
@@ -85,9 +70,8 @@ jobs:
           cd project2
           # install project2.
           # --no-build-isolation is needed so that ^^^ installed dsodemo could be found.
-          # --no-use-pep517 is used to workaround https://github.com/pypa/setuptools/issues/1694 on py36 and py35
           python -m pip install -v --no-index -f ../dist wheel  # needed by vvv
-          python -m pip install -v --no-index --no-build-isolation --no-use-pep517 -f ../../dist .
+          python -m pip install -v --no-index --no-build-isolation -f ../../dist .
           cd ../..
           python -m dsodemo.cli
           python -m nose2 dsodemo
@@ -154,7 +138,7 @@ jobs:
 
   manylinux:
     runs-on: ubuntu-latest
-    name: Test ${{ matrix.pyver }} / ${{ matrix.manylinux }}_${{ matrix.piparch }}
+    name: ${{ matrix.pyver }} / ${{ matrix.manylinux }}_${{ matrix.piparch }}
     strategy:
       fail-fast: false
       matrix:
@@ -213,12 +197,28 @@ jobs:
             pyver: "cp27-cp27mu"
 
           - manylinux: "manylinux2014"
+            piparch: "i686"
+            pyver: "cp36-cp36m"
+
+          - manylinux: "manylinux2014"
+            piparch: "i686"
+            pyver: "cp37-cp37m"
+
+          - manylinux: "manylinux2014"
             piparch: "x86_64"
             pyver: "cp27-cp27m"
 
           - manylinux: "manylinux2014"
             piparch: "x86_64"
             pyver: "cp27-cp27mu"
+
+          - manylinux: "manylinux2014"
+            piparch: "x86_64"
+            pyver: "cp36-cp36m"
+
+          - manylinux: "manylinux2014"
+            piparch: "x86_64"
+            pyver: "cp37-cp37m"
 
           # manylinux2010 doesn't include pip with >= 3.11
           - manylinux: "manylinux2010"
@@ -245,6 +245,7 @@ jobs:
           #!/bin/sh
           set -e -x
           ls /opt/python/*/bin/python
+          ls /opt/python/${{ matrix.pyver }}/bin/python
           cd /io
           export PATH="/opt/python/${{ matrix.pyver }}/bin:\$PATH"
           which python
