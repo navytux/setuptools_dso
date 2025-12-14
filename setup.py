@@ -31,7 +31,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: System :: Archiving :: Packaging',
         'Framework :: Setuptools Plugin',
-        'License :: OSI Approved :: BSD License',
     ],
     python_requires='>=2.7',
     install_requires = ['setuptools'],
