@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: BSD
 # See LICENSE
 import os
+import logging as log
 from functools import partial
 
 try:
@@ -20,7 +21,17 @@ except ImportError:
     from distutils.errors import DistutilsExecError as ExecError
     from distutils.errors import CompileError
     from distutils.sysconfig import customize_compiler
-import logging as log
+
+# setuptools v81 removed --dry-run
+def _has_dry_run():
+    try:
+        from inspect import signature
+    except ImportError: # < py3.3
+        return True # not supported by v81
+    else:
+        return 'dry_run' in signature(_new_compiler).parameters
+
+_has_dry_run = _has_dry_run()
 
 __all__ = (
     'new_compiler',
@@ -78,6 +89,9 @@ def _msvc_preprocess(self, source, output_file=None, macros=None,
 def new_compiler(**kws):
     """Returns a instance of a sub-class of distutils.ccompiler.CCompiler
     """
+    if not _has_dry_run:
+        kws.pop('dry_run', None) # setuptools v81 no longer supports :(
+
     compiler = _new_compiler(**kws)
     customize_compiler(compiler)
 

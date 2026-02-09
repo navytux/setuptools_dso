@@ -505,7 +505,7 @@ class build_dso(dso2libmixin, Command):
         if baselib!=solib:
             # we make best effort here, even though zipfiles (.whl or .egg) will contain copies
             log.info("symlink %s <- %s", solibbase, outbaselib)
-            if not self.dry_run:
+            if not getattr(self, 'dry_run', False):
                 if os.path.exists(outbaselib):
                     os.unlink(outbaselib)
                 os.symlink(solibbase, outbaselib)
@@ -548,7 +548,7 @@ class build_dso(dso2libmixin, Command):
             )
         )
 
-        if not self.dry_run:
+        if not getattr(self, 'dry_run', False):
             import textwrap
 
             with open(info_module_filename, "w") as file:
