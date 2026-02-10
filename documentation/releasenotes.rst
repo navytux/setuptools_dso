@@ -51,7 +51,7 @@ Release Notes
 ---------------
 
 * Avoid mutable default arguments
-* Workaround probable `bug <https://github.com/mdavidsaver/setuptools_dso/issues/23>`_ in `setuptools >= 63.4.3 <https://github.com/pypa/setuptools/issues/3591>`_
+* Workaround probable `bug <https://github.com/epics-base/setuptools_dso/issues/23>`_ in `setuptools >= 63.4.3 <https://github.com/pypa/setuptools/issues/3591>`_
 
 2.5 (Jan 2022)
 --------------

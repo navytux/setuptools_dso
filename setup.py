@@ -16,8 +16,8 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/mdavidsaver/setuptools_dso',
     project_urls={
-        'Documentation':'https://mdavidsaver.github.io/setuptools_dso',
-        'Release Notes':'https://mdavidsaver.github.io/setuptools_dso/releasenotes.html',
+        'Documentation':'https://epics-base.github.io/setuptools_dso',
+        'Release Notes':'https://epics-base.github.io/setuptools_dso/releasenotes.html',
     },
 
     author='Michael Davidsaver',

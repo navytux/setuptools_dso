@@ -39,7 +39,7 @@ __all__ = (
 
 
 # workaround for https://github.com/pypa/setuptools/issues/3591
-# cf. https://github.com/mdavidsaver/setuptools_dso/issues/23
+# cf. https://github.com/epics-base/setuptools_dso/issues/23
 #
 # setuptools >=63.4.3
 # each call to CCompiler.compile(..., include_dirs=None) appends to the

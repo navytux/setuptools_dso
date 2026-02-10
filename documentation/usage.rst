@@ -30,7 +30,7 @@ eg. ``export NUM_JOBS=1`` for a sequential build.
 Applying to your package
 ========================
 
-The `example/ <https://github.com/mdavidsaver/setuptools_dso/tree/master/example>`_ demonstrates building a non-python library,
+The `example/ <https://github.com/epics-base/setuptools_dso/tree/master/example>`_ demonstrates building a non-python library,
 and linking it with a python extension module.
 
 pyproject.toml
@@ -72,7 +72,7 @@ Building a DSO
 
 .. autoclass:: DSO
 
-The `example source <https://github.com/mdavidsaver/setuptools_dso/tree/master/example/src>`_
+The `example source <https://github.com/epics-base/setuptools_dso/tree/master/example/src>`_
 files while make up the non-python ``demo`` library are: ``mylib.h``, ``foo.c``, ``bar.cpp``.
 This library will be expressed as a `setuptools_dso.DSO` object.
 The first argument is a directory path and library base name encoded like a python module.

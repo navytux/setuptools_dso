@@ -7,6 +7,6 @@ libraries in Python Wheel packages by providing the means to
 replace an external build system (eg. Makefile) so that non-python
 libraries to be built from source within the python ecosystem.
 
-- Documentation at https://mdavidsaver.github.io/setuptools_dso
-- Github project https://github.com/mdavidsaver/setuptools_dso
+- Documentation at https://epics-base.github.io/setuptools_dso
+- Github project https://github.com/epics-base/setuptools_dso
 - PYPI https://pypi.org/project/setuptools-dso/
