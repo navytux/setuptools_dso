@@ -5,8 +5,8 @@ Release Notes
 
 .. currentmodule:: setuptools_dso
 
-2.12.3 (UNRELEASED)
--------------------
+2.12.3 (Feb 2026)
+-----------------
 
 * Adapt to `removal <https://github.com/pypa/setuptools/pull/4872>`_ of ``dry_run=`` argument.
 
